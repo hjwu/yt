@@ -55,14 +55,15 @@
             ${(issues || [])
               .filter(({ user }) => user.login === 'hjwu' || user.login === 'hsinjungwu')
               .filter(({ number }) => !search || Number(search.slice(1)) === number)
-			  .filter(({ state }) => state === 'open')
+              .filter(({ state }) => state === 'open')
               .map(({
                 title,
                 body,
+                number,
               }) => 
-			  html`
-				 ${search && html`
-                    <a href='${body}' download='${title}'>點我下載${title}</a>
+              html`
+                 ${search && html`
+                    <a key={${number}} href='${body}'>點我下載</a>${title}
                   `}
               `)}
           </div>
@@ -80,7 +81,7 @@
   <body>
     <div id="issuance">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
   </body>
 </html>
 
